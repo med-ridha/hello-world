@@ -83,7 +83,8 @@ int player_check_colone(int m[9][9],int p){
 			t[k] = m[j][i];
 			for(l=0;l<k;l++){
 				if(t[l] == t[k]){
-					printf("error : Number: %d in colone %d	",t[k],i);
+					printf("error : Number: %d in colone %d	",t[k],i+1);
+					printf("\n");
 					p = 1;
 			}
 			}
@@ -104,6 +105,8 @@ int player_check_ligne(int m[9][9],int p){
 			t[k] = m[i][j];
 			for(l=0;l<k;l++){
 				if(t[l] == t[k]){
+						printf("error : Number: %d in ligne %d	",t[k],i+1);
+						printf("\n");
 					p = 1;
 			}
 			}
@@ -117,18 +120,20 @@ return p;
 int player_check_mat(int m[9][9],int yyy){
 	int t[50];	
 	int k,p,j,i,v,l,c,b,kk,ll;
-	yyy = 0;
+	yyy = 0;int box = 0;
 	p = 0 ; i = 3;
 	for (b = 0 ;b  < 3 ; b ++){
 		k = 0 ; j = 3;
 		for(v = 0 ; v < 3 ; v++){
-				kk=0;
+				kk=0;box++;
 			for(l = p; l < i; l++){
 				for(c=k;c<j;c++){
 					if(m[l][c] > 0){
 						t[kk] = m[l][c];
 						for(ll=0;ll<kk;ll++){
 							if(t[ll] == t[kk]){
+									printf("error : Number: %d in box %d	",t[kk],box);
+									printf("\n");
 								yyy = 1;								
 							}
 						}
@@ -375,7 +380,7 @@ b:
 	switch(rep){
 		case 0:system("cls");goto a;break;
 		case 1:player_insert(mm,mn);system("cls");affiche(mm,mn,m,n);goto b;break;
-		case 2:check(mm);sleep(2);system("cls");affiche(mm,mn,m,n);goto b;break;
+		case 2:check(mm);system("pause");system("cls");affiche(mm,mn,m,n);goto b;break;
 		case 3:player_delete(mm,mn);system("cls");affiche(mm,mn,m,n);goto b;break;
 		case 4:reset(mm,mn);system("cls");affiche(mm,mn,m,n);goto b;break;
 		case 5:if (n==0) n = 1;else n = 0;system("cls");affiche(mm,mn,m,n);goto b;break;
