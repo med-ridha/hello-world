@@ -301,7 +301,9 @@ void player_insert(int mn[9][9],int mm[9][9]){
 	}
 	do{
 		printf("donner ton reponse 1 ~ 9: ");scanf("%d",&rep);
-	}while((rep < 1) || (rep > 9));
+		if (rep == 0)
+		goto d;
+	}while((rep < 0) || (rep > 9));
 mn[l-1][c-1] = rep;
 d:
 	l = 0;
