@@ -83,7 +83,7 @@ int player_check_colone(int m[9][9],int p){
 			t[k] = m[j][i];
 			for(l=0;l<k;l++){
 				if(t[l] == t[k]){
-					printf("error : Number: %d in colone %d	",t[k],i+1);
+					printf("error : Number: %d in column %d	",t[k],i+1);
 					printf("\n");
 					p = 1;
 			}
@@ -105,7 +105,7 @@ int player_check_ligne(int m[9][9],int p){
 			t[k] = m[i][j];
 			for(l=0;l<k;l++){
 				if(t[l] == t[k]){
-						printf("error : Number: %d in ligne %d	",t[k],i+1);
+						printf("error : Number: %d in line %d	",t[k],i+1);
 						printf("\n");
 					p = 1;
 			}
@@ -286,12 +286,12 @@ void player_insert(int mn[9][9],int mm[9][9]){
 	int c,l,rep;
 	a:
 	do{
-		printf("donner le ligne 1 ~ 9: ");scanf("%d",&l);
+		printf("insert line number 1 ~ 9: ");scanf("%d",&l);
 		if( l == 0)
 		goto d;
 	}while((l < 0) || (l > 9));
 	do{
-		printf("donner le colone 1 ~ 9: ");scanf("%d",&c);
+		printf("insert column number 1 ~ 9: ");scanf("%d",&c);
 		if( c == 0)
 		goto d;
 	}while((c < 0) || (c > 9));
@@ -300,7 +300,7 @@ void player_insert(int mn[9][9],int mm[9][9]){
 		goto a;
 	}
 	do{
-		printf("donner ton reponse 1 ~ 9: ");scanf("%d",&rep);
+		printf("insert number 1 ~ 9: ");scanf("%d",&rep);
 		if (rep == 0)
 		goto d;
 	}while((rep < 0) || (rep > 9));
@@ -314,12 +314,12 @@ void player_delete(int mn[9][9],int mm[9][9]){
 	int c,l;
 	a:
 	do{
-		printf("donner le ligne 1 ~ 9: ");scanf("%d",&l);
+		printf("insert line number 1 ~ 9: ");scanf("%d",&l);
 		if(l == 0)
 		goto d;
 	}while((l < 0) || (l > 9));
 	do{
-		printf("donner le colone 1 ~ 9: ");scanf("%d",&c);
+		printf("insert column number 1 ~ 9: ");scanf("%d",&c);
 		if(c == 0)
 		goto d;
 	}while((c < 0) || (c > 9));
