@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <unistd.h>
-
+int nn = 9;
 typedef enum TextColor
 {
     TC_BLACK = 0,
@@ -43,18 +43,18 @@ void setTextColor(FILE *stream, TextColor color)
 }
 
 
-void generate_tab(int t[9]){
+void generate_tab(int t[nn]){
 	srand((int) time(NULL));
-	int p,k,t1[9],i,u,j;
-	for (i=0;i<9;i++)
-		t[i] = (rand() % 9) + 1;
+	int p,k,t1[nn],i,u,j;
+	for (i=0;i<nn;i++)
+		t[i] = (rand() % nn) + 1;
 		
 	do{
 	p=0;
 	k=0;
 	
 		
-		for(j=0;j < 9;j++){
+		for(j=0;j < nn;j++){
 		
 			t1[p] = t[j];
 		
@@ -63,7 +63,7 @@ void generate_tab(int t[9]){
 				k++;
 				}
 				if(k>=1){
-					t[j] = (rand() % 9) + 1;
+					t[j] = (rand() % nn) + 1;
 				}
 				p++;
 	}
@@ -73,12 +73,12 @@ void generate_tab(int t[9]){
 
 
 
-int player_check_colone(int m[9][9],int p){
-	int t[9],i,j,l,k;
+int player_check_colone(int m[nn][nn],int p){
+	int t[nn],i,j,l,k;
 	p = 0;
-	for(i=0;i<9;i++){
+	for(i=0;i<nn;i++){
 	k=0;
-		for(j=0;j<9;j++){
+		for(j=0;j<nn;j++){
 			if(m[j][i] > 0){
 			t[k] = m[j][i];
 			for(l=0;l<k;l++){
@@ -95,12 +95,12 @@ int player_check_colone(int m[9][9],int p){
 return p;
 }
 
-int player_check_ligne(int m[9][9],int p){
-	int t[9],i,j,l,k;
+int player_check_ligne(int m[nn][nn],int p){
+	int t[nn],i,j,l,k;
 	p = 0;
-	for(i=0;i<9;i++){
+	for(i=0;i<nn;i++){
 	k=0;
-		for(j=0;j<9;j++){
+		for(j=0;j<nn;j++){
 			if(m[i][j] > 0){
 			t[k] = m[i][j];
 			for(l=0;l<k;l++){
@@ -117,8 +117,8 @@ int player_check_ligne(int m[9][9],int p){
 return p;
 }
 
-int player_check_mat(int m[9][9],int yyy){
-	int t[50];	
+int player_check_mat(int m[nn][nn],int yyy){
+	int t[100];	
 	int k,p,j,i,v,l,c,b,kk,ll;
 	yyy = 0;int box = 0;
 	p = 0 ; i = 3;
@@ -149,7 +149,7 @@ int player_check_mat(int m[9][9],int yyy){
 }
 
 
-void check(int m[9][9]){
+void check(int m[nn][nn]){
 	int checker=0,cm=0,cl=0,cc=0;
 	cm=player_check_mat(m,cm);
 	cl=player_check_ligne(m,cl);
@@ -164,7 +164,7 @@ void check(int m[9][9]){
 	
 	
 	
-void generate_f(int m[9][9],int t[9]){
+void generate_f(int m[nn][nn],int t[nn]){
 	int i,j,jj,k,p,l,v,c;
 	int b,kk,kkk;
 	k = 0 ; j = 3;
@@ -189,27 +189,27 @@ void generate_f(int m[9][9],int t[9]){
 	
 }
 
-void generate(int mm[9][9],int m[9][9],int mn[9][9]){
+void generate(int mm[nn][nn],int m[nn][nn],int mn[nn][nn]){
 	int l,c,i,j,tl[43],tc[43],p=0;
 	srand((int) time(NULL));
-	for(i=0;i<9;i++){
-		for(j=0;j<9;j++){
+	for(i=0;i<nn;i++){
+		for(j=0;j<nn;j++){
 			mm[i][j] = m[i][j];
 		}
 	}
 	int checkl;
 	for(i=0;i<43;i++){
-		l=rand() % 9;
+		l=rand() % nn;
 		tl[p] = l;
-		c=rand() % 9;
+		c=rand() % nn;
 		tc[p] = c;
 		do{
 			checkl=0;
 			for(j=0;j<p;j++){
 				if(tl[j] == l && tc[j] == c){
 					checkl=1;
-					l=rand() % 9;
-					c=rand() % 9;
+					l=rand() % nn;
+					c=rand() % nn;
 					break;
 				}
 				
@@ -218,18 +218,18 @@ void generate(int mm[9][9],int m[9][9],int mn[9][9]){
 		p++;
 		mm[l][c] = 0;
 	}
-for(i=0;i<9;i++){
-		for(j=0;j<9;j++){
+for(i=0;i<nn;i++){
+		for(j=0;j<nn;j++){
 			mn[i][j] = mm[i][j];
 		}
 	}
 }
 
 
-void affiche(int m[9][9],int mm[9][9],int mn[9][9],int n){
+void affiche(int m[nn][nn],int mm[nn][nn],int mn[nn][nn],int n){
 	int i,j,l;
 	setTextColor(stdout,TC_RED);
-	printf("     1  2  3   4  5  6   7  8  9  ");
+	printf("     1  2  3   4  5  6   7  8  nn  ");
 		if (n == 1){
 			setTextColor(stdout,TC_BLUE);
 			printf("\tSOLUTION: ");
@@ -239,8 +239,8 @@ void affiche(int m[9][9],int mm[9][9],int mn[9][9],int n){
 	setTextColor(stdout,TC_WHITE);
 	printf("\n");
 	
-	for(i=0;i<9;i++){
-		for(j=0;j<9;j++){
+	for(i=0;i<nn;i++){
+		for(j=0;j<nn;j++){
 			if(j == 0){
 				setTextColor(stdout,TC_RED);
 			printf("%d   ",i+1);
@@ -264,7 +264,7 @@ void affiche(int m[9][9],int mm[9][9],int mn[9][9],int n){
 		}
 		if(n==1){
 		printf("\t");
-		for(l=0;l<9;l++){
+		for(l=0;l<nn;l++){
 				if(mm[i][l] > 0)
 			setTextColor(stdout,TC_GREEN);
 			printf("%d ",mn[i][l]);
@@ -282,47 +282,47 @@ void affiche(int m[9][9],int mm[9][9],int mn[9][9],int n){
 }
 
 
-void player_insert(int mn[9][9],int mm[9][9]){
+void player_insert(int mn[nn][nn],int mm[nn][nn]){
 	int c,l,rep;
 	a:
 	do{
-		printf("insert line number 1 ~ 9: ");scanf("%d",&l);
+		printf("insert line number 1 ~ %d: ",nn);scanf("%d",&l);
 		if( l == 0)
 		goto d;
-	}while((l < 0) || (l > 9));
+	}while((l < 0) || (l > nn));
 	do{
-		printf("insert column number 1 ~ 9: ");scanf("%d",&c);
+		printf("insert column number 1 ~ %d: ",nn);scanf("%d",&c);
 		if( c == 0)
 		goto d;
-	}while((c < 0) || (c > 9));
+	}while((c < 0) || (c > nn));
 	if (mm[l-1][c-1] > 0){
 		printf("invalid position\n");
 		goto a;
 	}
 	do{
-		printf("insert number 1 ~ 9: ");scanf("%d",&rep);
+		printf("insert number 1 ~ %d: ",nn);scanf("%d",&rep);
 		if (rep == 0)
 		goto d;
-	}while((rep < 0) || (rep > 9));
+	}while((rep < 0) || (rep > nn));
 mn[l-1][c-1] = rep;
 d:
 	l = 0;
 }
 
 
-void player_delete(int mn[9][9],int mm[9][9]){
+void player_delete(int mn[nn][nn],int mm[nn][nn]){
 	int c,l;
 	a:
 	do{
-		printf("insert line number 1 ~ 9: ");scanf("%d",&l);
+		printf("insert line number 1 ~ %d: ",nn);scanf("%d",&l);
 		if(l == 0)
 		goto d;
-	}while((l < 0) || (l > 9));
+	}while((l < 0) || (l > nn));
 	do{
-		printf("insert column number 1 ~ 9: ");scanf("%d",&c);
+		printf("insert column number 1 ~ %d: ",nn);scanf("%d",&c);
 		if(c == 0)
 		goto d;
-	}while((c < 0) || (c > 9));
+	}while((c < 0) || (c > nn));
 	if (mm[l-1][c-1] > 0){
 		printf("invalid position\n");
 		goto a;
@@ -337,10 +337,10 @@ mn[l-1][c-1] = -1;
  	l = 0;
 }
 
-void reset(int mn[9][9],int mm[9][9]){
+void reset(int mn[nn][nn],int mm[nn][nn]){
 	int i,j;
-	for(i=0;i<9;i++){
-		for(j=0;j<9;j++){
+	for(i=0;i<nn;i++){
+		for(j=0;j<nn;j++){
 			mn[i][j] = mm[i][j] ;
 		}
 	}
@@ -351,7 +351,7 @@ void reset(int mn[9][9],int mm[9][9]){
 
 	
 int main(){
-int t[9],m[9][9];int mm[9][9];int mn[9][9];	
+int t[nn],m[nn][nn];int mm[nn][nn];int mn[nn][nn];	
 int rep;
 int n;
 
@@ -366,7 +366,6 @@ a:
 	affiche(mm,mn,m,n);
 	n=0;
 b:	
-
 	printf("\nwhat u gonna do ? \n");
 	printf("0_generate_new_board  \n");
 	printf("1_insert(enter 0 to cancel)  \n");
@@ -377,7 +376,7 @@ b:
 	printf("5_show solution\n");
 	if(n==1)
 	printf("5_hide solution\n");
-	printf("6_quit  \n");
+	printf("7_quit  \n");
 	scanf("%d",&rep);
 	switch(rep){
 		case 0:system("cls");goto a;break;
