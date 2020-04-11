@@ -229,7 +229,7 @@ for(i=0;i<nn;i++){
 void affiche(int m[nn][nn],int mm[nn][nn],int mn[nn][nn],int n){
 	int i,j,l;
 	setTextColor(stdout,TC_RED);
-	printf("     1  2  3   4  5  6   7  8  nn  ");
+	printf("     1  2  3   4  5  6   7  8  9  ");
 		if (n == 1){
 			setTextColor(stdout,TC_BLUE);
 			printf("\tSOLUTION: ");
