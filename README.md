@@ -1,2 +1,2 @@
 # sudoku
-very basic sudoku game using c
+very basic sudoku game in the terminal using c
