@@ -33,7 +33,7 @@ void generate_tab(int t[9]){
 
 
 
-int player_check_colone(int m[9][9],int p){
+int player_check_column(int m[9][9],int p){
 	int t[9],i,j,l,k;
 	p = 0;
 	for(i=0;i<9;i++){
@@ -113,13 +113,13 @@ void check(int m[9][9]){
 	int checker=0,cm=0,cl=0,cc=0;
 	cm=player_check_mat(m,cm);
 	cl=player_check_ligne(m,cl);
-	cc=player_check_colone(m,cc);
+	cc=player_check_column(m,cc);
 	if((cm == 1) || (cl == 1) || (cc == 1))
-	checker = 1;
+	  checker = 1;
 	if(checker == 1)
-	printf("WRONG!\n");
+	  printf("WRONG!\n");
 	if (checker == 0)
-	printf("ALL GOOD!\n");
+	  printf("ALL GOOD!\n");
 	}
 	
 	
@@ -330,11 +330,12 @@ b:
 	printf("3_delete(enter 0 to cancel)  \n");
 	printf("4_reset  \n");
 	if(n==0)
-	printf("5_show solution\n");
+	  printf("5_show solution\n");
 	if(n==1)
-	printf("5_hide solution\n");
+	  printf("5_hide solution\n");
 	printf("6_quit  \n");
-	scanf("%d",&rep);
+	scanf("%d%*c",&rep);
+  char x;
 	switch(rep){
 		case 0:system("clear");goto a;break;
 		case 1:player_insert(mm,mn);system("clear");affiche(mm,m,n);goto b;break;
