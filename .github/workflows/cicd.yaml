@@ -20,7 +20,7 @@ jobs:
         with:
           registry: docker.io
           username: medridhazemzem
-          password: ${{ secrets.TOKEN }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: tag
         run: docker tag sudoku medridhazemzem/sudoku:latest
