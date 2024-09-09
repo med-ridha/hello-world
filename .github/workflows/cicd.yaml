@@ -14,8 +14,16 @@ jobs:
       - name: Build
         run: docker build -t sudoku .
       # push package to github
+      - name: docker - login
+        id: docker_login
+        uses: docker/login-action@v2
+        with:
+          registry: docker.io
+          username: medridhazemzem
+          password: ${{ secrets.TOKEN }}
+
       - name: tag
-        run: docker tag sudoku med-ridha/sudoku
+        run: docker tag sudoku medridhazemzem/sudoku:latest
       - name: Push to Docker Hub
-        run: docker push med-ridha/sudoku
+        run: docker push medridhazemzem/sudoku:latest
 
