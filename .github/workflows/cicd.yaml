@@ -8,29 +8,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - id: tolower_image
-      uses: ASzc/change-string-case-action@v5
-      with:
-        string: ${{ github.event.repository.name }}
-
-    - name: checkout
-      uses: actions/checkout@v3
-
-
-    - name: Build and cache
-      id: docker_build
-      uses: docker/build-push-action@v3
-      with:
-        context: master
-        push: true
-        tags: latest
-        labels: latest
-
-
-
-
-
-
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: docker build -t sudoku .
+      # push package to github
+      - name: tag
+        run: docker tag sudoku med-ridha/sudoku
+      - name: Push to Docker Hub
+        run: docker push med-ridha/sudoku
 
